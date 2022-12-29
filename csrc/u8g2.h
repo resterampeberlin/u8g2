@@ -310,6 +310,7 @@ struct u8g2_cb_struct
 
 typedef u8g2_uint_t (*u8g2_font_calc_vref_fnptr)(u8g2_t *u8g2);
 
+typedef void (*u8g2_user_interface_CB_fnptr)(uint8_t redraw);
 
 struct u8g2_struct
 {
@@ -383,6 +384,8 @@ struct u8g2_struct
 	// the following variable should be renamed to is_buffer_auto_clear
   uint8_t is_auto_page_clear; 		/* set to 0 to disable automatic clear of the buffer in firstPage() and nextPage() */
   
+  // called in userInterface* functions if not NULL
+  u8g2_user_interface_CB_fnptr user_interface_CB;
 };
 
 #define u8g2_GetU8x8(u8g2) ((u8x8_t *)(u8g2))
@@ -465,6 +468,10 @@ void u8g2_SendF(u8g2_t * u8g2, const char *fmt, ...);
 
 /* null device setup */
 void u8g2_Setup_null(u8g2_t *u8g2, const u8g2_cb_t *rotation, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
+
+void u8g2_UserInterfaceSetCallback(u8g2_t *u8g2, u8g2_user_interface_CB_fnptr callback);
+
+void u8g2_UserInterfaceCallback(u8g2_t *u8g2, uint8_t redraw);
 
 /*==========================================*/
 /* u8g2_d_memory.c generated code start */

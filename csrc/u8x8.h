@@ -298,7 +298,7 @@ struct u8x8_display_info_struct
   uint16_t pixel_height;
 };
 
-
+typedef void (*u8x8_user_interface_CB_fnptr)(uint8_t redraw);
 
 /* list of U8x8 pins */
 #define U8X8_PIN_D0 0
@@ -369,6 +369,9 @@ struct u8x8_struct
 #ifdef U8X8_USE_PINS 
   uint8_t pins[U8X8_PIN_CNT];	/* defines a pinlist: Mainly a list of pins for the Arduino Envionment, use U8X8_PIN_xxx to access */
 #endif
+
+  // called in userInterface* functions if not NULL
+  u8x8_user_interface_CB_fnptr user_interface_CB;
 };
 
 #ifdef U8X8_WITH_USER_PTR
@@ -547,6 +550,10 @@ uint8_t u8x8_dummy_cb(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
 void u8x8_SetupDefaults(u8x8_t *u8x8); /* do not use this, use u8x8_Setup() instead */
 
 void u8x8_Setup(u8x8_t *u8x8, u8x8_msg_cb display_cb, u8x8_msg_cb cad_cb, u8x8_msg_cb byte_cb, u8x8_msg_cb gpio_and_delay_cb);
+
+void u8x8_UserInterfaceSetCallback(u8x8_t *u8x8, u8x8_user_interface_CB_fnptr callback);
+
+void u8x8_UserInterfaceCallback(u8x8_t *u8x8, uint8_t redraw); 
 
 /*==========================================*/
 /* u8x8_display.c */

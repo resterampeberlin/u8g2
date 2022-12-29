@@ -145,7 +145,9 @@ uint8_t u8x8_UserInterfaceMessage(u8x8_t *u8x8, const char *title1, const char *
 	cursor = button_cnt;
       cursor--;
       u8x8_draw_button_line(u8x8, y, u8x8_GetCols(u8x8), cursor, buttons);
-    }    
+    }
+    else       
+      u8x8_UserInterfaceCallback(u8x8, 0);
   }  
   return 0;
 }

@@ -168,6 +168,8 @@ uint8_t u8x8_UserInterfaceSelectionList(u8x8_t *u8x8, const char *title, uint8_t
       u8sl_Prev(&u8sl);
       u8x8_DrawSelectionList(u8x8, &u8sl, u8x8_sl_string_line_cb, sl);      
     }
+    else       
+      u8x8_UserInterfaceCallback(u8x8, 0);
   }
 }
 

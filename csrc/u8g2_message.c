@@ -189,6 +189,8 @@ uint8_t u8g2_UserInterfaceMessage(u8g2_t *u8g2, const char *title1, const char *
 	      cursor--;
 	      break;
 	    }    
+      else          
+        u8g2_UserInterfaceCallback(u8g2, 0);
       }
   }
   /* never reached */

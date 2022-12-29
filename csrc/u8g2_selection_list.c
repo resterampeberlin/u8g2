@@ -279,6 +279,8 @@ uint8_t u8g2_UserInterfaceSelectionList(u8g2_t *u8g2, const char *title, uint8_t
           u8sl_Prev(&u8sl);
           break;
         }
+        else          
+          u8g2_UserInterfaceCallback(u8g2, 0);
       }
   }
 }

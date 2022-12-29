@@ -132,6 +132,8 @@ uint8_t u8g2_UserInterfaceInputValue(u8g2_t *u8g2, const char *title, const char
 	  local_value = lo;
 	else
 	  local_value++;
+
+  u8g2_UserInterfaceCallback(u8g2, 1);  
 	break;
       }
       else if ( event == U8X8_MSG_GPIO_MENU_PREV || event == U8X8_MSG_GPIO_MENU_DOWN )
@@ -140,8 +142,12 @@ uint8_t u8g2_UserInterfaceInputValue(u8g2_t *u8g2, const char *title, const char
 	  local_value = hi;
 	else
 	  local_value--;
+  
+  u8g2_UserInterfaceCallback(u8g2, 1);  
 	break;
       }        
+      else 
+         u8g2_UserInterfaceCallback(u8g2, 0);       
     }
   }
   

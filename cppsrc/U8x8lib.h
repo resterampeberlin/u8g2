@@ -348,6 +348,8 @@ class U8X8
       return u8x8_UserInterfaceMessage(&u8x8, title1, title2, title3, buttons); }
     uint8_t userInterfaceInputValue(const char *title, const char *pre, uint8_t *value, uint8_t lo, uint8_t hi, uint8_t digits, const char *post) {
       return u8x8_UserInterfaceInputValue(&u8x8, title, pre, value, lo, hi, digits, post); }
+    void userInterfaceSetCallback(u8x8_user_interface_CB_fnptr callback) {
+      u8x8_UserInterfaceSetCallback(&u8x8, callback); }
          
      /* LiquidCrystal compatible functions */
     void home(void) { tx = 0; ty = 0; }

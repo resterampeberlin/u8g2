@@ -107,6 +107,7 @@ uint8_t u8x8_UserInterfaceInputValue(u8x8_t *u8x8, const char *title, const char
       else
 	local_value++;
       u8x8_DrawUTF8(u8x8, x, y, u8x8_u8toa(local_value, digits));
+      u8x8_UserInterfaceCallback(u8x8, 1);  
     }
     else if ( event == U8X8_MSG_GPIO_MENU_PREV || event == U8X8_MSG_GPIO_MENU_DOWN )
     {
@@ -115,7 +116,10 @@ uint8_t u8x8_UserInterfaceInputValue(u8x8_t *u8x8, const char *title, const char
       else
 	local_value--;
       u8x8_DrawUTF8(u8x8, x, y, u8x8_u8toa(local_value, digits));
+      u8x8_UserInterfaceCallback(u8x8, 1);  
     }        
+    else 
+      u8x8_UserInterfaceCallback(u8x8, 0);
   }
   
   u8x8_SetInverseFont(u8x8, 0);

@@ -101,6 +101,25 @@ void u8g2_SetupBuffer(u8g2_t *u8g2, uint8_t *buf, uint8_t tile_buf_height, u8g2_
 #ifdef U8G2_WITH_FONT_ROTATION  
   u8g2->font_decode.dir = 0;
 #endif
+
+  u8g2->user_interface_CB = NULL;
+}
+
+/*
+  Set callback for userInterface functions
+*/
+void u8g2_UserInterfaceSetCallback(u8g2_t *u8g2, u8g2_user_interface_CB_fnptr callback) 
+{
+  u8g2->user_interface_CB = callback;
+}
+
+/*
+  Invoke callback for userInterface functions if set
+*/
+void u8g2_UserInterfaceCallback(u8g2_t *u8g2, uint8_t redraw) 
+{
+  if (u8g2->user_interface_CB != NULL)
+    u8g2->user_interface_CB(redraw);
 }
 
 /*

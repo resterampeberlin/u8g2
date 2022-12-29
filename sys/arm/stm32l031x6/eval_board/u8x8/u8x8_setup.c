@@ -69,8 +69,17 @@ void u8x8_SetupDefaults(u8x8_t *u8x8)
       u8x8->pins[i] = U8X8_PIN_NONE;
   }
 #endif
+
+    u8x8->user_interface_CB = NULL;
 }
 
+/*
+  Set callback for userInterface functions
+*/
+void u8x8_UserInterfaceSetCallback(u8x8_t *u8x8, u8x8_user_interface_CB_fnptr callback) 
+{
+  u8x8->user_interface_CB = callback;
+}
 
 /*
   Description:

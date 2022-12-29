@@ -342,6 +342,9 @@ struct u8x8_struct
 #ifdef U8X8_USE_PINS 
   uint8_t pins[U8X8_PIN_CNT];	/* defines a pinlist: Mainly a list of pins for the Arduino Envionment, use U8X8_PIN_xxx to access */
 #endif
+
+  // called in userInterface* functions if not NULL
+  u8x8_user_interface_CB_fnptr user_interface_CB;
 };
 
 #ifdef U8X8_WITH_USER_PTR
@@ -899,6 +902,7 @@ uint8_t u8x8_UserInterfaceMessage(u8x8_t *u8x8, const char *title1, const char *
 
 uint8_t u8x8_UserInterfaceInputValue(u8x8_t *u8x8, const char *title, const char *pre, uint8_t *value, uint8_t lo, uint8_t hi, uint8_t digits, const char *post);
 
+void u8x8_UserInterfaceSetCallback(u8x8_t *u8x8, u8x8_user_interface_CB_fnptr callback);
 
 /*==========================================*/
 /* start font list */

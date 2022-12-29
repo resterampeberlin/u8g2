@@ -546,6 +546,9 @@ public:
 		return u8g2_UserInterfaceInputValue(&u8g2, title, pre, value, lo, hi,
 				digits, post);
 	}
+  	void userInterfaceSetCallback(u8g2_user_interface_CB_fnptr callback) {
+    	u8g2_UserInterfaceSetCallback(&u8g2, callback);
+  	}
 
 	/* LiquidCrystal compatible functions */
 	void home(void) {

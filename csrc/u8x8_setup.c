@@ -113,8 +113,26 @@ void u8x8_SetupDefaults(u8x8_t *u8x8)
       u8x8->pins[i] = U8X8_PIN_NONE;
   }
 #endif
+
+    u8x8->user_interface_CB = NULL;
 }
 
+/*
+  Set callback for userInterface functions
+*/
+void u8x8_UserInterfaceSetCallback(u8x8_t *u8x8, u8x8_user_interface_CB_fnptr callback) 
+{
+  u8x8->user_interface_CB = callback;
+}
+
+/*
+  Invoke callback for userInterface functions if set
+*/
+void u8x8_UserInterfaceCallback(u8x8_t *u8x8, uint8_t redraw) 
+{
+  if (u8x8->user_interface_CB != NULL)
+    u8x8->user_interface_CB(redraw);
+}
 
 /*
   Description:
