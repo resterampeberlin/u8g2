@@ -187,6 +187,7 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "96x40" },
+      { "96x39" },
       { NULL }
     }
   },
@@ -195,6 +196,7 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "96x40" },
+      { "96x39" },
       { NULL }
     }
   },
@@ -276,6 +278,7 @@ struct controller controller_list[] =
     "Not tested", /* is_generate_u8g2_class= */ 1,
     {
       { "seeed_96x96" },
+      { "hjr_oel1m0201_96x96" },
       { NULL }
     }
   },
@@ -284,6 +287,7 @@ struct controller controller_list[] =
     "Not tested", /* is_generate_u8g2_class= */ 1,
     {
       { "seeed_96x96" },
+      { "hjr_oel1m0201_96x96" },
       { NULL }
     }
   },
@@ -293,6 +297,7 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "128x80" },  /* actually this is a 80x128 display */
+      { "tk078f288_80x128" }, 
       { NULL }
     }
   },
@@ -301,6 +306,7 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "128x80" }, /* actually this is a 80x128 display */
+      { "tk078f288_80x128" }, 
       { NULL }
     }
   },
@@ -322,6 +328,23 @@ struct controller controller_list[] =
       { "128x128" },				// not tested
       { "pimoroni_128x128" },		// not tested
       { "seeed_128x128" },		// in lab
+      { NULL }
+    }
+  },
+
+  {
+    "sh1108", 	 16, 	20, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "128x160" },
+      { NULL }
+    }
+  },
+  {
+    "sh1108", 	 16, 	20, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "128x160" },
       { NULL }
     }
   },
@@ -540,6 +563,24 @@ struct controller controller_list[] =
   },
   
 
+    /* https://github.com/olikraus/u8g2/issues/1938 */
+  {
+    "ssd1316", 	12, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "96x32" },
+      { NULL }
+    }
+  },
+  {
+    "ssd1316", 	12, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "96x32" },
+      { NULL }
+    }
+  },
+
   {
     "ssd1317", 	12, 	12, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
     "", /* is_generate_u8g2_class= */ 1,
@@ -671,6 +712,7 @@ struct controller controller_list[] =
     {
       { "ea_w128128" },
       { "midas_128x128" },
+      { "zjy_128x128" },  /* issue 1960 */
       { "ws_128x128" },
       { NULL }
     }
@@ -765,6 +807,35 @@ struct controller controller_list[] =
       { NULL }
     }
   },
+
+
+  {
+    "st7920", 	20, 	4, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_001", "p", COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "160x32" },
+      { NULL }
+    }
+  },
+  {
+    "st7920", 	20, 	4, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_001", "", COM_6800,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "160x32" },
+      { NULL }
+    }
+  },
+  {
+    "st7920", 	20, 	4, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_st7920_spi", "s", COM_ST7920SPI,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "160x32" },
+      { NULL }
+    }
+  },
+  
+
+
   
   {
     "st7920", 	24, 	4, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_001", "p", COM_8080,
@@ -1231,17 +1302,29 @@ struct controller controller_list[] =
       { NULL }
     }
   },
+  
+  
+/* https://www.crystalfontz.com/controllers/Sitronix/ST7567A/ supports I2C */  
+  
   {
-    "st7567", 		17, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
+    "st7567", 		17, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "pi_132x64" },
       { NULL }
     }
   },
-
   {
-    "st7567", 		16, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
+    "st7567", 		17, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_fast_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "pi_132x64" },
+      { NULL }
+    }
+  },
+  
+  {
+    "st7567", 		16, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "jlx12864" },
@@ -1251,7 +1334,6 @@ struct controller controller_list[] =
       { NULL }
     }
   },
-  
   {
     "st7567", 		16, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_fast_i2c", "i2c", COM_I2C,
     "", /* is_generate_u8g2_class= */ 1,
@@ -1265,7 +1347,50 @@ struct controller controller_list[] =
   },
 
   {
-    "st7567", 		8, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
+    "st7567", 		17, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "erc13232" },
+      { NULL }
+    }
+  },
+  {
+    "st7567", 		17, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_fast_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "erc13232" },
+      { NULL }
+    }
+  },
+
+  {
+    "st7567", 		16, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "122x32" },
+      { NULL }
+    }
+  },
+  {
+    "st7567", 		16, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_fast_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "122x32" },
+      { NULL }
+    }
+  },
+  
+  {
+    "st7567", 		8, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "64x32" },
+      { "hem6432" },
+      { NULL }
+    }
+  },
+  {
+    "st7567", 		8, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_ssd13xx_fast_i2c", "i2c", COM_I2C,
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "64x32" },
@@ -1274,23 +1399,8 @@ struct controller controller_list[] =
     }
   },
 
-  {
-    "st7567", 		16, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
-    "", /* is_generate_u8g2_class= */ 1,
-    {
-      { "122x32" },
-      { NULL }
-    }
-  },
-
-  {
-    "st7567", 		17, 	4, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
-    "", /* is_generate_u8g2_class= */ 1,
-    {
-      { "erc13232" },
-      { NULL }
-    }
-  },
+  
+  
   
   {
     "st7571", 		16, 	16, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_6800|COM_8080,
@@ -1332,6 +1442,15 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "s028hn118a" },
+      { NULL }
+    },
+  },
+
+  {
+    "st7586s", 		48, 	20, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_011", "", COM_4WSPI,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "jlx384160" },
       { NULL }
     },
   },
@@ -1501,6 +1620,24 @@ struct controller controller_list[] =
     },
   },
 
+  {
+    "st75256", 		20, 	10, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "jlx16080" },
+      { NULL }
+    },
+  },
+  
+  {
+    "st75256", 		20, 	10, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_st75256_i2c", "i2c", COM_I2C,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "jlx16080" },
+      { NULL }
+    },
+  },
+
     {
     "st75320", 		40, 	30, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
     "", /* is_generate_u8g2_class= */ 1,
@@ -1533,6 +1670,14 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "erc19264" },
+      { NULL }
+    }
+  },
+  {
+    "ist3088", 	40, 	30, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_6800|COM_8080,
+    "not tested", /* is_generate_u8g2_class= */ 1,
+    {
+      { "320x240" },
       { NULL }
     }
   },
@@ -1627,6 +1772,14 @@ struct controller controller_list[] =
     "U8x8 not supported, no powerdown, no HW flip, no constrast", /* is_generate_u8g2_class= */ 1,
     {
       { "240x64" },
+      { NULL }
+    }
+  },
+  {
+    "lc7981", 	16, 	16, 	"u8g2_ll_hvline_horizontal_right_lsb", "u8x8_cad_100", "", COM_6800,
+    "U8x8 not supported, no powerdown, no HW flip, no constrast", /* is_generate_u8g2_class= */ 1,
+    {
+      { "128x128" },
       { NULL }
     }
   },
@@ -1725,6 +1878,14 @@ struct controller controller_list[] =
     }
   },
   {
+    "ssd1362", 	32, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_001", "", COM_4WSPI|COM_3WSPI|COM_6800|COM_8080,
+    "Requires U8G2_16BIT (see u8g2.h)", /* is_generate_u8g2_class= */ 1,
+    {
+      { "ws_256x64" },
+      { NULL }
+    }
+  },
+  {
     "ssd1606", 	22, 	9, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_3WSPI,
     "Partly supported by U8x8, no HW flip, no contrast setting", /* is_generate_u8g2_class= */ 1,
     {
@@ -1810,6 +1971,17 @@ struct controller controller_list[] =
     }
   },
   
+  
+  { /* cad001 or cad011: this controller doesn't contain two byte commands, argument is not required */
+    "s1d15300", 	16, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "lm6023" }, /* 128x64 */
+      { NULL }
+    }
+  },
+  
+  
   {
     "s1d15e06", 	20, 	13, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_011", "", COM_4WSPI|COM_6800|COM_8080,
     "", /* is_generate_u8g2_class= */ 1,
@@ -1833,6 +2005,33 @@ struct controller controller_list[] =
     "", /* is_generate_u8g2_class= */ 1,
     {
       { "128x64" },
+      { NULL }
+    }
+  },
+
+  {
+    "gu800", 	20, 	2, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_gu800_cad_110", "", COM_4WSPI|COM_6800|COM_8080,
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "160x16" },
+      { NULL }
+    }
+  },
+
+  {
+    "gp1287ai", 	32, 	7, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_empty", "", COM_4WSPI, /* DC pin is not used */
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "256x50" },
+      { NULL }
+    }
+  },
+
+  {
+    "gp1247ai", 	32, 	8, 	"u8g2_ll_hvline_vertical_top_lsb", "u8x8_cad_empty", "", COM_4WSPI, /* DC pin is not used */
+    "", /* is_generate_u8g2_class= */ 1,
+    {
+      { "253x63" },
       { NULL }
     }
   },
